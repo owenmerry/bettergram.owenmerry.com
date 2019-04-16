@@ -64,20 +64,22 @@ class Profile extends React.Component {
             <ProfileImage image={this.state.user.userImage} />
             <div className="page-text">
                 <h1 className="page-name">{this.state.user.userName}</h1>
-                <div className="stat-grid">
-                    <div className="stat">
-                        <h3 className="stat-title">24</h3>
-                        <div className="stat-text">Posts</div>
+                {1 === 0 ? (
+                    <div className="stat-grid">
+                        <div className="stat">
+                            <h3 className="stat-title">24</h3>
+                            <div className="stat-text">Posts</div>
+                        </div>
+                        <div className="stat">
+                            <h3 className="stat-title">143</h3>
+                            <div className="stat-text">Views</div>
+                        </div>
+                        <div className="stat stat-long">
+                            <h3 className="stat-title">2 days ago</h3>
+                            <div className="stat-text">Last Added to</div>
+                        </div>
                     </div>
-                    <div className="stat">
-                        <h3 className="stat-title">143</h3>
-                        <div className="stat-text">Views</div>
-                    </div>
-                    <div className="stat stat-long">
-                        <h3 className="stat-title">2 days ago</h3>
-                        <div className="stat-text">Last Added to</div>
-                    </div>
-                </div>
+                ) : ''}
             </div>
         </div>
         <div className="heading">
@@ -89,7 +91,7 @@ class Profile extends React.Component {
 
             {Object.keys(this.state.folders).map((key) =>
                 <Link key={key} href={`/folder?id=${key}`} >
-                    <a className="grid-item">
+                    <a className="grid-item grid-item-circle">
                         <div className="image image-circle" style={{backgroundImage: 'url(' + this.state.folders[key].folderImage + ')',}}></div>
                         <div className="text">{this.state.folders[key].folderTitle}</div>
                     </a>
@@ -104,9 +106,9 @@ class Profile extends React.Component {
             <h2>Most Recent</h2>
         </div>
         <div className="grid-container">
-            {Object.keys(this.state.posts).map((key) =>
+            {Object.keys(this.state.posts).reverse().splice(0,8).map((key) =>
                 <Link key={key} href="/folder" >
-                    <a className="grid-item image image-scale" style={{backgroundImage: 'url(' + this.state.posts[key].postImage + ')',}}>
+                    <a className="grid-item grid-item-image image image-scale" style={{backgroundImage: 'url(' + this.state.posts[key].postImage + ')',}}>
                     </a>
                 </Link>
             )}
@@ -136,8 +138,13 @@ class Profile extends React.Component {
             .grid-item {
                 float:left;
                 width:33.3333vw;
-                height:33.3333vw;
                 text-align:center;
+            }
+            .grid-item-image{
+                height:33.3333vw;
+            }
+            .grid-item-circle{
+                padding-bottom:20px;
             }
 
             .image{
@@ -156,6 +163,7 @@ class Profile extends React.Component {
             .image-circle{
                 border-radius:50%;
             }
+
             .image-scale{
                 min-height:inherit;
                 max-width:inherit;
@@ -172,27 +180,6 @@ class Profile extends React.Component {
                 text-decoration:none;
             }
 
-            @media only screen and (min-width: 840px) {
-                .grid-item {
-                    width:25vw;
-                    height:25vw;
-                }
-            }
-
-            @media only screen and (min-width: 1172px) {
-                .grid-item {
-                    width:293px;
-                    height:293px;
-                }
-            }
-
-            @media only screen and (min-width: 1172px) {
-                .grid-item {
-                    width:20vw;
-                    height:20vw;
-                }
-            }
-
             .clear{
                 clear:both;
             }
@@ -204,6 +191,9 @@ class Profile extends React.Component {
                 align-items:center;
                 margin: 40px 25px 25px 25px;
 
+            }
+            .page-text{
+                margin-left:45px;
             }
             .page-name{
                 font-size: 33px;
@@ -255,6 +245,50 @@ class Profile extends React.Component {
             }
 
 
+
+            @media only screen and (max-width: 840px) {
+                .page-info{
+                    display:block;
+                    text-align:center;
+                }
+                .page-text{
+                    margin-left:0px;
+                }
+                .image-circle{
+                    width:120px;
+                    height:120px;
+                    min-height:120px;
+                }
+            }
+
+            @media only screen and (min-width: 840px) {
+                .grid-item {
+                    width:25vw;
+                }
+                .grid-item-image{
+                height:25vw;
+                }
+            }
+
+            @media only screen and (min-width: 1172px) {
+                .grid-item {
+                    width:293px;
+
+                }
+                .grid-item-image{
+                    height:293px;
+                }
+            }
+
+            @media only screen and (min-width: 1172px) {
+                .grid-item {
+                    width:20vw;
+    
+                }
+                .grid-item-image{
+                    height:20vw;
+                }
+            }
 
 
         `}</style>

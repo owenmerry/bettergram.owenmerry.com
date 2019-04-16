@@ -62,6 +62,7 @@ class Folder extends React.Component {
                 <div className="page-image" style={{backgroundImage: 'url(' + this.state.folder.folderImage + ')',}}></div>
                 <div className="page-text">
                     <h1 className="page-name">{this.state.folder.folderTitle}</h1>
+                    {1 === 0 ? (
                     <div className="stat-grid">
                         <div className="stat">
                             <h3 className="stat-title">24</h3>
@@ -76,11 +77,11 @@ class Folder extends React.Component {
                             <div className="stat-text">Last Added to</div>
                         </div>
                     </div>
+                    ) : '' }
                 </div>
             </div>
-            <div className="filter"></div>
                 <div className="grid-container">
-                {Object.keys(this.state.posts).map((key) =>
+                {Object.keys(this.state.posts).reverse().map((key) =>
                 <Link key={key} href="/folder" >
                     <a className="grid-item image image-scale" style={{backgroundImage: 'url(' + this.state.posts[key].postImage + ')',}}>
                     </a>
@@ -88,6 +89,11 @@ class Folder extends React.Component {
             )}
                 </div>
                 <style jsx>{`
+
+                .back a{
+                    color:black;
+                    text-decoration: none;
+                }
                     .page-info{
                     }
                 .grid-container {
@@ -98,27 +104,6 @@ class Folder extends React.Component {
                         float:left;
                         width:33.3333vw;
                         height:33.3333vw;
-                    }
-
-                    @media only screen and (min-width: 840px) {
-                        .grid-item {
-                            width:25vw;
-                            height:25vw;
-                        }
-                    }
-
-                    @media only screen and (min-width: 1172px) {
-                        .grid-item {
-                            width:293px;
-                            height:293px;
-                        }
-                    }
-
-                    @media only screen and (min-width: 1172px) {
-                        .grid-item {
-                            width:20vw;
-                            height:20vw;
-                        }
                     }
 
                     .image{
@@ -206,6 +191,42 @@ class Folder extends React.Component {
                     }
 
 
+
+                    @media only screen and (max-width: 840px) {
+                        .page-info{
+                            display:block;
+                            text-align:center;
+                        }
+                        .page-text{
+                            margin-left:0px;
+                        }
+                        .page-image{
+                            margin-left:0px;
+                            margin:0px auto;
+                            margin-bottom:20px;
+                        }
+                    }
+
+                    @media only screen and (min-width: 840px) {
+                        .grid-item {
+                            width:25vw;
+                            height:25vw;
+                        }
+                    }
+
+                    @media only screen and (min-width: 1172px) {
+                        .grid-item {
+                            width:293px;
+                            height:293px;
+                        }
+                    }
+
+                    @media only screen and (min-width: 1172px) {
+                        .grid-item {
+                            width:20vw;
+                            height:20vw;
+                        }
+                    }
 
 
                 `}</style>

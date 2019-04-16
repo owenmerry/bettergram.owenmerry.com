@@ -5311,10 +5311,10 @@ exports.formatWithValidation = formatWithValidation;
 
 /***/ }),
 
-/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fowenmerry%2FSites%2Fframeworks%2Fnextjs%2Ffirebase-simple%2Fpages%2Findex.js!./":
-/*!****************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fowenmerry%2FSites%2Fframeworks%2Fnextjs%2Ffirebase-simple%2Fpages%2Findex.js ***!
-  \****************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fowenmerry%2FSites%2Fmy-websites%2Fbettergram.owenmerry.com%2Fpages%2Findex.js!./":
+/*!*****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fowenmerry%2FSites%2Fmy-websites%2Fbettergram.owenmerry.com%2Fpages%2Findex.js ***!
+  \*****************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9638,7 +9638,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);
-var _jsxFileName = "/Users/owenmerry/Sites/frameworks/nextjs/firebase-simple/pages/index.js";
+var _jsxFileName = "/Users/owenmerry/Sites/my-websites/bettergram.owenmerry.com/pages/index.js";
 
 // This is the Link API
 
@@ -9678,7 +9678,7 @@ var Index = function Index() {
     },
     __self: this
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_1___default.a, {
-    href: "admin",
+    href: "settings",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 12
@@ -9690,7 +9690,7 @@ var Index = function Index() {
       lineNumber: 13
     },
     __self: this
-  }, "Admin"))));
+  }, "Settings"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Index);
@@ -9698,13 +9698,13 @@ var Index = function Index() {
 /***/ }),
 
 /***/ 0:
-/*!********************************************************************************************************************************************************!*\
-  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fowenmerry%2FSites%2Fframeworks%2Fnextjs%2Ffirebase-simple%2Fpages%2Findex.js ***!
-  \********************************************************************************************************************************************************/
+/*!*********************************************************************************************************************************************************!*\
+  !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fowenmerry%2FSites%2Fmy-websites%2Fbettergram.owenmerry.com%2Fpages%2Findex.js ***!
+  \*********************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fowenmerry%2FSites%2Fframeworks%2Fnextjs%2Ffirebase-simple%2Fpages%2Findex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fowenmerry%2FSites%2Fframeworks%2Fnextjs%2Ffirebase-simple%2Fpages%2Findex.js!./");
+module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fowenmerry%2FSites%2Fmy-websites%2Fbettergram.owenmerry.com%2Fpages%2Findex.js! */"./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?page=%2F&absolutePagePath=%2FUsers%2Fowenmerry%2FSites%2Fmy-websites%2Fbettergram.owenmerry.com%2Fpages%2Findex.js!./");
 
 
 /***/ }),

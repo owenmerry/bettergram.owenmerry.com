@@ -9,8 +9,10 @@ const ImageCircle = (props) => (
             background-size: cover;
             background-position: center center;
             border-radius:50%;
-            margin-right:46px;
+            margin: 0px auto;
+            margin-bottom:20px;
         }
+
       `}</style>
   </div>
 )

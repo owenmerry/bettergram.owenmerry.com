@@ -9,8 +9,8 @@ const Index = () => (
         </Link>
     </div>
     <div className="link">
-        <Link href="admin">
-            <a>Admin</a>
+        <Link href="settings">
+            <a>Settings</a>
         </Link>
     </div>
   </div>

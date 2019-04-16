@@ -6370,7 +6370,7 @@ function connect(options) {
       error.name = err.name;
       error.stack = err.stack; // __NEXT_DIST_DIR is provided by webpack
 
-      source_map_support_1.rewriteStacktrace(error, "/Users/owenmerry/Sites/frameworks/nextjs/firebase-simple/.next");
+      source_map_support_1.rewriteStacktrace(error, "/Users/owenmerry/Sites/my-websites/bettergram.owenmerry.com/.next");
       return error;
     }
   };

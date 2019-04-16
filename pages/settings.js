@@ -9,7 +9,7 @@ import { database, storageRoot } from '../helpers/firebase.js'
 
 // Class
 
-class Admin extends React.Component {
+class Settings extends React.Component {
 
 
   // Starting class
@@ -260,4 +260,4 @@ class Admin extends React.Component {
   }
 }
 
-export default Admin;
+export default Settings;
