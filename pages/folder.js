@@ -54,7 +54,7 @@ class Folder extends React.Component {
         return (    
             <div>
             <div className="back">
-                <Link href="/profile">
+                <Link href="/">
                     <a>back</a>
                 </Link>
             </div>
