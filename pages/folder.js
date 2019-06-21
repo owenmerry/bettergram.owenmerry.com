@@ -82,7 +82,7 @@ class Folder extends React.Component {
             </div>
                 <div className="grid-container">
                 {Object.keys(this.state.posts).reverse().map((key) =>
-                <Link key={key} href="/folder" >
+                <Link key={key} href={`/post?id=${key}`}>
                     <a className="grid-item image image-scale" style={{backgroundImage: 'url(' + this.state.posts[key].postImage + ')',}}>
                     </a>
                 </Link>
@@ -184,7 +184,9 @@ class Folder extends React.Component {
                     }
 
                     .back{
-                        margin: 17px 25px 40px;
+                        padding: 17px 25px 20px 25px;
+                        margin-bottom:  20px;
+                        border-bottom:solid 1px #dcdcdc;
                         color:#7e7e7e;
                         font-size:16px;
                         letter-spacing: -0.5px;

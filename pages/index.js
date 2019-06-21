@@ -107,7 +107,7 @@ class Index extends React.Component {
         </div>
         <div className="grid-container">
             {Object.keys(this.state.posts).reverse().splice(0,8).map((key) =>
-                <Link key={key} href="/folder" >
+                <Link key={key} href={`/post?id=${key}`} >
                     <a className="grid-item grid-item-image image image-scale" style={{backgroundImage: 'url(' + this.state.posts[key].postImage + ')',}}>
                     </a>
                 </Link>
