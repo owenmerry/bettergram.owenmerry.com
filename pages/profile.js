@@ -1,12 +1,13 @@
 // This is the Link API
 import Link from 'next/link'
 import ProfileImage from '../components/profile-image'
+import Header from '../components/header'
 import { database } from '../helpers/firebase.js'
 import React from "react";
 
 class Profile extends React.Component {
 
-    constructor() {
+    constructor(query) {
         super();
 
         this.state = { 
@@ -15,15 +16,18 @@ class Profile extends React.Component {
             user: {},
           };
 
+        this.userID = query.id;
+
+        this.getData(query);
 
     }
 
 
 
 
-    getData() {
+    getData(query) {
 
-        database.ref('users/-LcH3_cySnZobSDrvnhc')
+        database.ref(`users/${this.userID}`)
         .once('value').then((snapshot) => {
             this.setState({
                 user: snapshot.val()
@@ -31,6 +35,8 @@ class Profile extends React.Component {
         })
 
         database.ref('folders')
+        .orderByChild('userID')
+        .equalTo(this.userID)
         .once('value').then((snapshot) => {
             this.setState({
                 folders: snapshot.val()
@@ -38,6 +44,8 @@ class Profile extends React.Component {
         })
 
         database.ref('posts')
+        .orderByChild('userID')
+        .equalTo(this.userID)
         .once('value').then((snapshot) => {
             this.setState({
                 posts: snapshot.val()
@@ -47,19 +55,16 @@ class Profile extends React.Component {
       }
 
 
-    //   static async getInitialProps() {
-    //     this.getData();
-    //   }
-
-
-    componentDidMount(){
-        this.getData();
+    static async getInitialProps(context) {
+        console.log('get data from getinitialprops', context.query.id);
+        const id = context.query.id;
+        return {id};
     }
-
  
  render () {
     return (
     <div>
+    <Header />
         <div className="page-info">
             <ProfileImage image={this.state.user.userImage} />
             <div className="page-text">
@@ -107,7 +112,7 @@ class Profile extends React.Component {
         </div>
         <div className="grid-container">
             {Object.keys(this.state.posts).reverse().splice(0,8).map((key) =>
-                <Link key={key} href="/folder" >
+                <Link key={key} href={`/post?id=${key}`} >
                     <a className="grid-item grid-item-image image image-scale" style={{backgroundImage: 'url(' + this.state.posts[key].postImage + ')',}}>
                     </a>
                 </Link>

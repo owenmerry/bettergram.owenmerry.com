@@ -3,6 +3,7 @@ import Link from 'next/link'
 import ProfileImage from '../components/profile-image'
 import { database } from '../helpers/firebase.js'
 import React from "react";
+import Header from '../components/header'
 
 class Index extends React.Component {
 
@@ -60,28 +61,7 @@ class Index extends React.Component {
  render () {
     return (
     <div>
-        <div className="page-info">
-            <ProfileImage image={this.state.user.userImage} />
-            <div className="page-text">
-                <h1 className="page-name">{this.state.user.userName}</h1>
-                {1 === 0 ? (
-                    <div className="stat-grid">
-                        <div className="stat">
-                            <h3 className="stat-title">24</h3>
-                            <div className="stat-text">Posts</div>
-                        </div>
-                        <div className="stat">
-                            <h3 className="stat-title">143</h3>
-                            <div className="stat-text">Views</div>
-                        </div>
-                        <div className="stat stat-long">
-                            <h3 className="stat-title">2 days ago</h3>
-                            <div className="stat-text">Last Added to</div>
-                        </div>
-                    </div>
-                ) : ''}
-            </div>
-        </div>
+    <Header />
         <div className="heading">
             <h2>Collections</h2>
         </div>

@@ -2,7 +2,7 @@
 //import
 import React from "react";
 import { database, storageRoot } from '../helpers/firebase.js'
-
+import Header from '../components/header'
 
 // Logic
 
@@ -14,7 +14,7 @@ class Settings extends React.Component {
 
   // Starting class
 
-  constructor() {
+  constructor(query) {
     super();
     this.state = { 
       folderTitle: '',
@@ -27,6 +27,8 @@ class Settings extends React.Component {
       folders: [],
     };
 
+    this.userID = query.id || '-LcH3_cySnZobSDrvnhc';
+
     database.ref('folders')
     .once('value').then((snapshot) => {
         this.setState({
@@ -37,13 +39,12 @@ class Settings extends React.Component {
   }
 
 
-  // Lifecycles
 
-  componentDidMount(){
-  }
-
-  componentWillUnmount(){
-  }
+  static async getInitialProps(context) {
+    console.log('get data from getinitialprops', context.query.id);
+    const id = context.query.id;
+    return {id};
+}
 
 
 
@@ -65,6 +66,7 @@ class Settings extends React.Component {
           .push({
             folderTitle: this.state.folderTitle,
             folderImage: url,
+            userID: this.userID,
           })
 
         //reset state and inputs
@@ -95,6 +97,7 @@ class Settings extends React.Component {
             postTitle: this.state.postTitle,
             postImage: url,
             folderID: this.state.postFolderID,
+            userID: this.userID,
           })
 
         //reset state and inputs
@@ -177,6 +180,7 @@ class Settings extends React.Component {
   render() {
     return (
       <section>
+      <Header />
           <div>
             <h2>Create New Folder</h2>
             <div className='row'>
@@ -219,7 +223,7 @@ class Settings extends React.Component {
           </div>
 
           <div>
-            <h2>Create User</h2>
+            <h2>Update Profile</h2>
             <div className='row'>
               <label>Name:*</label>
               <input type='text' onChange={this.changeUserName.bind(this)} value={this.state.userName} />
@@ -255,6 +259,13 @@ class Settings extends React.Component {
               padding:10px;
             }
           `}</style>
+          <style global jsx>{`
+        body{
+                padding:0px;
+                margin:0px;   
+                font-family:Helvetica; 
+        }
+        `}</style>
       </section>
     );
   }

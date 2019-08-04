@@ -1,5 +1,6 @@
 import { withRouter } from 'next/router'
 import Link from 'next/link'
+import Header from '../components/header'
 import { database } from '../helpers/firebase.js'
 import React from "react";
 
@@ -53,6 +54,7 @@ class Folder extends React.Component {
     render () {
         return (    
             <div>
+            <Header />
             <div className="back">
                 <Link href="/">
                     <a>back</a>

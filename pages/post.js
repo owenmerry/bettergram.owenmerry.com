@@ -2,6 +2,7 @@ import { withRouter } from 'next/router'
 import Link from 'next/link'
 import { database } from '../helpers/firebase.js'
 import React from "react";
+import Header from '../components/header'
 
 class Post extends React.Component {
 
@@ -49,6 +50,7 @@ class Post extends React.Component {
     render () {
         return (    
             <div>
+            <Header />
             <div className="back">
                 <a onClick={this.goToLastPage}>back</a> 
             </div>
