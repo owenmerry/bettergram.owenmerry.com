@@ -89,11 +89,31 @@ class SignUp extends React.Component {
     });
 
     auth.createUserWithEmailAndPassword(userEmail, userPassword).then( cred => {
-      console.log(cred.user);
+
+      //get time
+      const now = new Date().getTime();
+      const url = '';
+      const userID = cred.user.uid;
+      const userName = '';
+
+      //create user
+      database.ref('users')
+      .push({
+        userID: userID,
+        userName: userName,
+        userImage: url,
+        userAdded: now,
+      })
+      
+      //reset settings
       this.setState({
         status: 'created user successfully and logged in',
         error: '',
       });
+
+      // go to home
+      //Router.push('/')
+
     }, (err) => {
       this.setState({
         error: err.message,

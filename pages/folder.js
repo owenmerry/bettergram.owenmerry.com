@@ -50,15 +50,18 @@ class Folder extends React.Component {
     }
 
 
+    goToLastPage = () => {
+        window.history.back();
+        //console.log('run this function');
+    }
+
 
     render () {
         return (    
             <div>
             <Header />
             <div className="back">
-                <Link href="/">
-                    <a>back</a>
-                </Link>
+                <a onClick={this.goToLastPage}>back</a>
             </div>
             <div className="page-info">
                 <div className="page-image" style={{backgroundImage: 'url(' + this.state.folder.folderImage + ')',}}></div>

@@ -27,12 +27,21 @@ class Settings extends React.Component {
       folders: [],
     };
 
+    //page settings
     this.userID = query.id || '-LcH3_cySnZobSDrvnhc';
+    this.showUpdateProfileImage = false;
 
     database.ref('folders')
     .once('value').then((snapshot) => {
         this.setState({
             folders: snapshot.val()
+        })
+    })
+
+    database.ref(`users/${this.userID}`)
+    .once('value').then((snapshot) => {
+        this.setState({
+            userName: snapshot.val().userName,
         })
     })
 
@@ -112,7 +121,23 @@ class Settings extends React.Component {
 
   }
 
-  addUser = () => {
+  updateUser = () => {
+
+    //get time
+    const now = new Date().getTime();
+        
+    //add to firebase
+    database.ref(`users/${this.userID}`)
+      .update({
+        userName: this.state.userName,
+        userUpdated: now,
+      })
+
+  }
+
+
+
+  updateUserProfileImage = () => {
 
     //setup image
     const file = this.userImage.files[0];
@@ -127,11 +152,11 @@ class Settings extends React.Component {
         const now = new Date().getTime();
         
         //add to firebase
-        database.ref('users')
+        database.ref(`users/${this.userID}`)
           .push({
             userName: this.state.userName,
             userImage: url,
-            userAdded: now,
+            userUpdated: now,
           })
 
         //reset state and inputs
@@ -229,13 +254,24 @@ class Settings extends React.Component {
               <input type='text' onChange={this.changeUserName.bind(this)} value={this.state.userName} />
             </div>
             <div className='row'>
+              <button onClick={this.updateUser}>Update User</button>
+            </div>
+          </div>
+
+
+          { this.showUpdateProfileImage ? (
+          <div>
+            <h2>Update Profile Image</h2>
+            <div className='row'>
               <label>Image:*</label>
               <input type='file' label='Upload' ref={(ref) => this.userImage = ref} />
             </div>
             <div className='row'>
-              <button onClick={this.addUser}>Add User</button>
+              <button onClick={this.updateUser}>Update User</button>
             </div>
           </div>
+          ) : '' }
+          
 
           <style jsx>{`
            .row{

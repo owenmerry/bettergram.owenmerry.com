@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { auth } from '../../helpers/firebase.js'
+import { database, auth } from '../../helpers/firebase.js'
 import Router from 'next/router'
 
 class Header extends React.Component {
@@ -9,20 +9,43 @@ class Header extends React.Component {
 
     this.state = { 
       loggedIn: false,
+      userID: '',
     };
 
   }
 
   componentDidMount(){
     auth.onAuthStateChanged( (user) => {
-      console.log('run auth check:', user);
       if(user){
-        this.setState({
-          loggedIn: true,
-        });
+
+        //variables
+        const userID = user.uid;
+
+        //get user details
+        database.ref(`users`)
+        .orderByChild('userID')
+        .equalTo(userID)
+        .once('value').then((snapshot) => {
+
+          // get settings
+          const userDetailsID = Object.keys(snapshot.val())[0];
+
+          //set settings
+          this.setState({
+            loggedIn: true,
+            userID: user.uid,
+            userDetailsID: userDetailsID,
+          });
+
+        })
+      
+
+
+
       } else {
         this.setState({
           loggedIn: false,
+          userID: '',
         });
       }
     });
@@ -45,14 +68,14 @@ class Header extends React.Component {
             <div className='item'><Link href={`/`} ><div>Home</div></Link></div>
             { this.state.loggedIn ? (
               <>
-                <div className='item'><Link href={`/old`} ><div>Profile</div></Link></div>
+                <div className='item'><Link href={`/profile?id=${this.state.userDetailsID}`} ><div>Profile</div></Link></div>
+                <div className='item'><Link href={`settings?id=${this.state.userDetailsID}`} ><div>Settings</div></Link></div>
                 <div className='item'><div onClick={this.userLogout}>Logout</div></div>
-                <div className='item'><Link href={`/settings`} ><div>Settings</div></Link></div>
               </>
             ) : (
               <>
                 <div className='item'><Link href={`/login`} ><div>Login</div></Link></div>
-                <div className='item'><Link href={`/signup`} ><div>Sign Up</div></Link></div>
+                <div className='item'><Link href={`/signup`} ><div>Create Account</div></Link></div>
               </>
             ) }
             
